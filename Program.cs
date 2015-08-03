@@ -29,7 +29,6 @@ namespace RomanNumber {
             #region 左方減法檢驗項目
             if (RomanMap.ContainsKey(UpperBound.Key)) {//如果上限值存在於字典(數值可能超過字典範圍導致Key為0)
                 var Del = (from t in RomanMap where t.Key < UpperBound.Key && Math.Log10(t.Key) % 1 == 0 orderby t.Key descending select t).First();//取得減法可擺放符號
-                
                 if (Math.Abs(UpperBound.Key - Value) / (double)Del.Key <= 1)//計算是否允許放置減法符號
                     return Del.Value + UpperBound.Value + IntegerToRoman(Math.Abs(Value - UpperBound.Key + Del.Key));//放置後又方補足數值差額
             }
